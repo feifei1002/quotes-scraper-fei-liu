@@ -59,6 +59,7 @@ python -m venv .venv
 pip install "git+https://github.com/feifei1002/quotes-scraper-fei-liu.git"
 python -m playwright install chromium
 ```
+**Important detail: for the direct GitHub install, ```data/memory.csv``` will be created in the folder where you run the command, not inside the installed package.**
 
 ## Login Details
 Create a ```.env``` file in the project root:
