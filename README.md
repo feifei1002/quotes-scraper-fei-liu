@@ -90,7 +90,7 @@ You can also provide these values as environment variables instead of using a ``
 ```quotes-scraper backfill --headless```
     - Example output:
             ```
-            Backfill complete: found 100, added 0, skipped 10.
+            Backfill complete: found 100, added 0, skipped 100.
             Memory file: data\memory.csv
             ```
 
