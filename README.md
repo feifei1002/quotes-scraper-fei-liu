@@ -54,6 +54,8 @@ python -m playwright install chromium
 ## B. Install directly from Github
 
 ```
+python -m venv .venv
+.venv\Scripts\activate
 pip install "git+https://github.com/feifei1002/quotes-scraper-fei-liu.git"
 python -m playwright install chromium
 ```
@@ -100,15 +102,3 @@ You can also provide these values as environment variables instead of using a ``
             Memory file: data\memory.csv
             ```
             A browser should pop-up.
-
-- Use a custom memory file:
-```quotes-scraper backfill --memory-file data/test-memory.csv```
-    - Example output:
-        ```
-        Backfill complete: found 100, added 100, skipped 0.
-        Memory file: data\memory.csv
-        ```
-
-## Tests:
-- Run the unit tests:
-```python -m unittest discover -s tests```
