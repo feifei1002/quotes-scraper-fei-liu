@@ -3,6 +3,7 @@ __pycache__/
 *.py[cod]
 .env
 .pytest_cache/
-data/memory.csv
+data/*.csv
+data/.gitkeep
 dist/
 *.egg-info/

@@ -16,20 +16,19 @@ The project is split into small modules:
 - `storage.py` reads and writes the CSV memory file and prevents duplicates.
 - `cli.py` provides the `quotes-scraper` command.
 
-The memory is stored at:
+## Output and Memory File
 
 ```text
 data/memory.csv
 ```
-
-It contains these columns:
+The file is created automatically when ```backfill``` or ```latest``` adds records for the first time. The CSV contains one row per quote with these columns:
 quote, author, tags, page_number
 
 ## Duplicate detection
 
 A duplicate is identified using the quote text and author name.
-Before comparing recors, the scraper lowercases the values and normalizes whitespace. This means small formatting differences such as extra spaces, do not create duplicate rows.
-Tags are not included in teh duplicate key because the quote text and author are the main identity of the record.
+Before comparing records, the scraper lowercases the values and normalizes whitespace. This means small formatting differences such as extra spaces, do not create duplicate rows.
+Tags are not included in the duplicate key because the quote text and author are the main identity of the record.
 
 ## Assumptions and Limitations
 
@@ -38,7 +37,7 @@ Tags are not included in teh duplicate key because the quote text and author are
 - The target website is small, so ```latest``` scans the available pages and then appends only records not already in memory.
 - CSV is used because the case study asks for data/memory.csv and CSV opens easily in Excel.
 
-## Clone and Install
+## A. Clone and Install Locally
 
 ```
 git clone https://github.com/feifei1002/quotes-scraper-fei-liu.git
@@ -51,13 +50,21 @@ On Windows:
 pip install -e .
 python -m playwright install chromium
 ```
-Login Details:
-Create a ```.env```file in the project root:
+
+## B. Install directly from Github
+
+```
+pip install "git+https://github.com/feifei1002/quotes-scraper-fei-liu.git"
+python -m playwright install chromium
+```
+
+## Login Details
+Create a ```.env``` file in the project root:
 ```
 QUOTES_USERNAME=test
 QUOTES_PASSWORD=test
 ```
-You can also provide these values as enviroment variables instead of using a ```.env``` file.
+You can also provide these values as environment variables instead of using a ```.env``` file.
 
 ## Commands
 
@@ -65,7 +72,7 @@ You can also provide these values as enviroment variables instead of using a ```
 ```quotes-scraper backfill```
     - Example output:
         ```
-        Backfill complete: found 10, added 10, skipped 0.
+        Backfill complete: found 100, added 100, skipped 0.
         Memory file: data\memory.csv
         ```
 
@@ -81,7 +88,7 @@ You can also provide these values as enviroment variables instead of using a ```
 ```quotes-scraper backfill --headless```
     - Example output:
             ```
-            Backfill complete: found 10, added 0, skipped 10.
+            Backfill complete: found 100, added 0, skipped 10.
             Memory file: data\memory.csv
             ```
 
@@ -98,7 +105,7 @@ You can also provide these values as enviroment variables instead of using a ```
 ```quotes-scraper backfill --memory-file data/test-memory.csv```
     - Example output:
         ```
-        Backfill complete: found 10, added 10, skipped 0.
+        Backfill complete: found 100, added 100, skipped 0.
         Memory file: data\memory.csv
         ```
 

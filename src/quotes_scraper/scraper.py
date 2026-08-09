@@ -63,7 +63,7 @@ class QuotesScraper:
 
             next_link = page.locator('li.next a')
 
-            if next_link.count() > 0:
+            if next_link.count() == 0:
                 next_url = ""
             else:
                 href = next_link.first.get_attribute("href")
